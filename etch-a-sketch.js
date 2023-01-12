@@ -1,60 +1,52 @@
+
+let defaultRow = 16;
+let defaultColumn = 16;
+
 const btn = document.querySelector('#btn');
+const container = document.querySelector('.grid')
+
 btn.addEventListener('click', () => {
-    let number = prompt("Enter the number of squares per side (the maximum is 100)");
-    if (number > 100 || isNaN(number)) {
-        alert("Number lower than 100 required!")
+    const container = document.querySelector('.grid');
+    let allItems = document.querySelectorAll('.item');
+    let itemsArray = [...allItems];
+    itemsArray.forEach((item) => {
+        container.removeChild(item);
+    })
+    let number = prompt("Enter the number of squares per side (number must be from 2 to 100)");
+    if (number < 2 || number > 100 || isNaN(number)) {
+        alert("A number from 2 to 100 required!")
         location.reload();
-    }
-    
+    } 
+    addDivs(number, number);
+
 });
 
-let rows = 16;
-let cols = 16;
+function addDivs(row, column) {
+    let gridSize = row * column;
+    const container = document.querySelector('.grid');
 
-const container = document.querySelector('.container')
+    container.style.setProperty('--grid-rows', row);
+    container.style.setProperty('--grid-cols', column);
 
-function addDivs(rows, cols){
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for (let i = 0; i < rows * cols; i++) {
+    for (let i = 0; i < gridSize; i++) {
         const content = document.createElement('div');
         content.classList.add('item');
-        container.appendChild(content);
-    }
+        container.appendChild(content);      
+    };
     changeColor();
 }
+
+addDivs(defaultRow, defaultColumn);
 
 function changeColor() {
     const etchs = document.querySelectorAll('.item');
     etchs.forEach(etch => {
         etch.addEventListener('mouseover', () => {
-            etch.style.backgroundColor = 'red';
+            etch.style.backgroundColor = 'grey';
         });
     });
 }
 
-addDivs(rows, cols);
 
-/*let number = 16;
-
-container.style.setProperty('grid-column', number);
-
-let grid = number * number
-
-for (let i = 0; i < grid; i++) {
-
-    const content = document.createElement('div');
-    content.classList.add('item');
-    container.appendChild(content);
-
-}*/
-
-
-
-/*for (let j = 0; j < etchs.length; j++) {
-    etchs[j].addEventListner('mouseover', () => {
-        etchs[j].style.backgroundColor = 'blue'; 
-    });
-}*/
 
 
