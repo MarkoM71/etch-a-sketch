@@ -1,3 +1,16 @@
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+    let number = prompt("Enter the number of squares per side (the maximum is 100)");
+    if (number > 100 || isNaN(number)) {
+        alert("Number lower than 100 required!")
+        location.reload();
+    }
+    
+});
+
+let rows = 16;
+let cols = 16;
+
 const container = document.querySelector('.container')
 
 function addDivs(rows, cols){
@@ -20,7 +33,7 @@ function changeColor() {
     });
 }
 
-addDivs(16, 16);
+addDivs(rows, cols);
 
 /*let number = 16;
 
