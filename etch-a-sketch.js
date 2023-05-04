@@ -3,7 +3,7 @@ let defaultRow = 16;
 let defaultColumn = 16;
 
 const btn = document.querySelector('#btn');
-const container = document.querySelector('.grid')
+//const container = document.querySelector('.grid')
 
 btn.addEventListener('click', () => {
     const container = document.querySelector('.grid');
@@ -32,7 +32,7 @@ function addDivs(row, column) {
         const content = document.createElement('div');
         content.classList.add('item');
         container.appendChild(content);      
-    };
+    }
     changeColor();
 }
 
